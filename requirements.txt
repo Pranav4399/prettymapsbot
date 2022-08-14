@@ -1,6 +1,6 @@
 descartes==1.1.0
 matplotlib==3.5.1
-osmnx==1.2.1
+osmnx
 prettymaps
 python-dotenv==0.20.0
 Shapely==1.8.2
