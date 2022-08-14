@@ -20,8 +20,12 @@ from descartes import PolygonPatch
 from shapely.geometry import *
 from shapely.affinity import *
 from shapely.ops import unary_union
-#import keys file
-from keys import *
+#import env
+from dotenv import load_dotenv
+import os
+
+# Credentials
+load_dotenv('.env')
 
 def create_pretty_map():
     city_latitude, city_longitude, city_name, city_country = get_city_detail()
@@ -78,7 +82,7 @@ def create_pretty_map():
         zorder = 6, 
         fontproperties = fm.FontProperties(fname = 'Orbitron.ttf', size = 30)
     )
-    plt.savefig(city_name + '.jpeg')
+    #plt.savefig(city_name + '.jpeg')
     upload_to_twitter(city_name, city_country)
 
 def upload_to_twitter(city_name, city_country):
@@ -87,8 +91,8 @@ def upload_to_twitter(city_name, city_country):
                         #access_token=access_token, access_token_secret=access_token_secret)
 
     #Connect to api using tweepy V1(only v1 api works as on 10/04/2022)
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_token_secret)
+    auth = tweepy.OAuthHandler(os.getenv('consumer_key'), os.getenv('consumer_secret'))
+    auth.set_access_token(os.getenv('access_token'), os.getenv('access_token_secret'))
     api = tweepy.API(auth, wait_on_rate_limit = True)
 
     # Upload image
