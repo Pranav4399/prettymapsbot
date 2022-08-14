@@ -83,7 +83,7 @@ def create_pretty_map():
         fontproperties = fm.FontProperties(fname = 'Orbitron.ttf', size = 30)
     )
     plt.savefig(city_name + '.jpeg')
-    #upload_to_twitter(city_name, city_country)
+    upload_to_twitter(city_name, city_country)
 
 def upload_to_twitter(city_name, city_country):
     #tweepy V2
