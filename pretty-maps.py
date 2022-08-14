@@ -82,7 +82,7 @@ def create_pretty_map():
         zorder = 6, 
         fontproperties = fm.FontProperties(fname = 'Orbitron.ttf', size = 30)
     )
-    #plt.savefig(city_name + '.jpeg')
+    plt.savefig('./maps/' + city_name + '.jpeg')
     upload_to_twitter(city_name, city_country)
 
 def upload_to_twitter(city_name, city_country):
@@ -96,7 +96,7 @@ def upload_to_twitter(city_name, city_country):
     api = tweepy.API(auth, wait_on_rate_limit = True)
 
     # Upload image
-    media = api.media_upload(city_name + '.jpeg')
+    media = api.media_upload('./maps/' + city_name + '.jpeg')
     api.update_status(city_name + ', ' + city_country, media_ids = [media.media_id_string])
     
 
