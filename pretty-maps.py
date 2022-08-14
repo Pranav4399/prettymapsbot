@@ -97,7 +97,7 @@ def upload_to_twitter(city_name, city_country):
     
 
 def get_city_detail():
-    standard_date = date(2022, 4, 11)
+    standard_date = date(2022, 8, 14)
     with open('world_cities.json', encoding="utf8") as data_file:   
         data = json.load(data_file)
         for v in data:
